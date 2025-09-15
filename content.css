@@ -1,0 +1,234 @@
+/* content.css */
+
+/* 通常のボタンコンテナ（SPビューや位置指定が必要な場合） */
+.findy-manager-buttons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ヘッダー内にインライン配置される場合のスタイル */
+.findy-manager-buttons-inline {
+  position: relative !important;
+  display: inline-flex !important;
+  right: auto !important;
+  top: auto !important;
+  margin-left: auto !important; /* 右寄せにする */
+  margin-right: 12px !important; /* 右端から少し離す */
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  vertical-align: middle;
+}
+
+/* ヘッダー内のレイアウト調整 */
+[class*="work-list-item-pc_component_header__"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+}
+
+/* 日付コンテナ */
+[class*="work-list-item-pc_component_dateContainer__"] {
+  flex: 0 0 auto !important;
+  margin-right: 12px !important;
+}
+
+/* 「閲覧済」ラベルの配置調整 */
+[class*="work-list-item-pc_component_actionLabel__"] {
+  flex: 0 0 auto !important;
+  margin-left: 0 !important;
+  margin-right: auto !important; /* 右側の空間を埋める */
+  position: relative !important;
+}
+
+/* OK/NGボタンを「閲覧済」の右側に配置 */
+[class*="work-list-item-pc_component_actionLabel__"]
+  + .findy-manager-buttons-inline {
+  margin-left: 16px !important; /* 「閲覧済」との間隔 */
+  margin-right: 0 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* ヘッダー全体を相対配置に */
+[class*="work-list-item-pc_component_header__"]:has(
+    .findy-manager-buttons-inline
+  ) {
+  position: relative !important;
+}
+
+/* モバイル/レスポンシブ対応 */
+@media (max-width: 768px) {
+  .findy-manager-buttons:not(.findy-manager-buttons-inline) {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 10px 0;
+    justify-content: flex-start;
+  }
+
+  [class*="work-list-item-pc_component_actionLabel__"]
+    + .findy-manager-buttons-inline {
+    position: relative !important;
+    right: auto !important;
+    transform: none !important;
+  }
+}
+
+/* ボタンの基本スタイル */
+.findy-manager-btn {
+  padding: 5px 12px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* OKボタン */
+.findy-manager-ok {
+  background: #ffffff;
+  color: #16a34a;
+  border-color: #16a34a;
+}
+
+.findy-manager-ok:hover:not(.active) {
+  background: #16a34a;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+.findy-manager-ok.active {
+  background: #16a34a;
+  color: white;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* NGボタン */
+.findy-manager-ng {
+  background: #ffffff;
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+.findy-manager-ng:hover:not(.active) {
+  background: #dc2626;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.findy-manager-ng.active {
+  background: #dc2626;
+  color: white;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* お気に入りアイテムのスタイル */
+.findy-manager-favorite {
+  background: linear-gradient(
+    to right,
+    rgba(22, 163, 74, 0.08),
+    transparent
+  ) !important;
+  border-left: 3px solid #16a34a !important;
+  position: relative;
+}
+
+/* お気に入りマークの追加 */
+.findy-manager-favorite::before {
+  content: "⭐";
+  position: absolute;
+  left: -20px;
+  top: 15px;
+  font-size: 14px;
+  animation: starPulse 2s infinite;
+}
+
+/* PCビューのカード形式の場合 */
+[class*="card_component_base__"].findy-manager-favorite {
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important;
+}
+
+@keyframes starPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* ゴミ箱アイテムのスタイル（非表示アニメーション） */
+.findy-manager-trash {
+  animation: fadeOutSlide 0.3s ease forwards;
+  opacity: 0.5;
+}
+
+@keyframes fadeOutSlide {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+/* ホバー時の効果を軽量化 */
+[class*="work-list-item"]:hover
+  .findy-manager-buttons:not(.findy-manager-buttons-inline) {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 細かい調整 */
+.findy-manager-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.findy-manager-btn:active {
+  transform: scale(0.98);
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .findy-manager-buttons:not(.findy-manager-buttons-inline) {
+    background: #1f2937;
+  }
+
+  .findy-manager-ok {
+    background: #1f2937;
+    border-color: #16a34a;
+  }
+
+  .findy-manager-ng {
+    background: #1f2937;
+    border-color: #dc2626;
+  }
+}

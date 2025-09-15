@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Findy Fav Manager",
+  "version": "1.0.0",
+  "description": "Findyで見つけたお気に入りの仕事を管理する拡張機能",
+  
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://findy-code.io/*",
+        "https://*.findy-code.io/*",
+        "http://findy-code.io/*",
+        "http://*.findy-code.io/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "icons": {
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  }
+}

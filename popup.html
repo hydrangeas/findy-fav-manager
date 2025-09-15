@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>リスト管理</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <h1>📋 リスト管理</h1>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="favorite">
+          ⭐ お気に入り (<span id="favorite-count">0</span>)
+        </button>
+        <button class="tab-button" data-tab="trash">
+          🗑️ ゴミ箱 (<span id="trash-count">0</span>)
+        </button>
+      </div>
+
+      <div class="tab-content" id="favorite-tab">
+        <div class="search-box" id="favorite-search-box" style="display: none">
+          <input type="text" id="favorite-search" placeholder="検索..." />
+        </div>
+        <div id="favorite-list" class="list-container">
+          <p class="empty-message">まだ何もありません</p>
+        </div>
+      </div>
+
+      <div class="tab-content" id="trash-tab" style="display: none">
+        <div class="search-box" id="trash-search-box" style="display: none">
+          <input type="text" id="trash-search" placeholder="検索..." />
+        </div>
+        <div id="trash-list" class="list-container">
+          <p class="empty-message">まだ何もありません</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

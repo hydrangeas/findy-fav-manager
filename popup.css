@@ -1,0 +1,210 @@
+/* popup.css - ポップアップのスタイル */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.popup-container {
+  background: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  background: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+  color: #666;
+}
+
+.tab-button:hover {
+  background: #e0e0e0;
+}
+
+.tab-button.active {
+  background: white;
+  color: #764ba2;
+  border-bottom: 2px solid #764ba2;
+}
+
+.search-box {
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box input:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 2px rgba(118, 75, 162, 0.1);
+}
+
+.list-container {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 280px;
+  padding: 10px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 60px 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.list-item:hover {
+  background: #f0f0f0;
+  transform: translateX(5px);
+}
+
+.item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-company {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-bottom: 4px;
+}
+
+.item-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.item-url {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.item-url:hover {
+  text-decoration: underline;
+}
+
+.item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.clear-button {
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding: 10px;
+  background: linear-gradient(135deg, #f44336, #da190b);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.clear-button:hover {
+  background: linear-gradient(135deg, #da190b, #f44336);
+  transform: scale(1.02);
+}
+
+/* スクロールバーのスタイル */
+.list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
